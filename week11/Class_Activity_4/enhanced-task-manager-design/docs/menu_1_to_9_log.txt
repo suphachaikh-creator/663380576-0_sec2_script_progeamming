@@ -1,0 +1,219 @@
+ยินดีต้อนรับสู่ระบบ Enhanced Task Manager!
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 1
+กรอกรายละเอียดงาน (Description): Create test report
+กรอกป้ายกำกับ (Tags คั่นด้วยจุลภาค เช่น work,urgent,home - หรือเว้นว่างได้): python,test
+[สำเร็จ]: เพิ่มงานทั่วไป ID 6 ('Create test report') เรียบร้อยแล้ว
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 2
+กรอกรายละเอียดงาน (Description): Submit project
+กรอกวันครบกำหนด (YYYY-MM-DD เช่น 2024-12-31): 2026-10-01
+กรอกป้ายกำกับ (Tags คั่นด้วยจุลภาค เช่น work,urgent,home - หรือเว้นว่างได้): deadline
+[สำเร็จ]: เพิ่มงานครบกำหนด ID 7 (ครบกำหนด: 2026-10-01) เรียบร้อยแล้ว
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 3
+กรอกรายละเอียดงาน (Description): Fix filters
+กรอกระดับความสำคัญ (High / Medium / Low): High
+กรอกป้ายกำกับ (Tags คั่นด้วยจุลภาค เช่น work,urgent,home - หรือเว้นว่างได้): urgent
+[สำเร็จ]: เพิ่มงานความสำคัญ ID 8 (ระดับ: High) เรียบร้อยแล้ว
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 4
+
+--- รายการงานทั้งหมด (8 รายการ) ---
+- ID: 1 | Description: อ่านเอกสาร PLAN.md และทำความเข้าใจสถาปัตยกรรม | Status: Completed | Tags: study, architecture, week11
+- ID: 2 | Description: ส่งงานโปรเจกต์ Task Manager ฉบับสมบูรณ์ | Status: Pending | Due: 2026-09-30 | Tags: assignment, university
+- ID: 3 | Description: Implement ฟังก์ชัน search_tasks, filter_tasks และ sort_tasks | Status: Pending | Priority: High | Tags: coding, python, priority
+- ID: 4 | Description: ทบทวนการทำงานของ Data Persistence และ JSON Serialization | Status: Pending | Priority: Medium | Tags: review, python
+- ID: 5 | Description: 2 | Status: Pending | Due: 2021-12-30
+- ID: 6 | Description: Create test report | Status: Pending | Tags: python, test
+- ID: 7 | Description: Submit project | Status: Pending | Due: 2026-10-01 | Tags: deadline
+- ID: 8 | Description: Fix filters | Status: Pending | Priority: High | Tags: urgent
+-----------------------------------
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 5
+กรอก ID ของงานที่เสร็จสิ้น: 2
+[สำเร็จ]: งาน ID 2 ถูกเปลี่ยนสถานะเป็น 'เสร็จสมบูรณ์ (Completed)' แล้ว
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 6
+กรอก ID ของงานที่ต้องการลบ: 5
+[สำเร็จ]: ลบงาน ID 5 เรียบร้อยแล้ว
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 7
+กรอกคำค้นหา (Keyword): PYTHON
+
+--- ผลการค้นหาสำหรับ 'PYTHON' (3 รายการ) ---
+- ID: 3 | Description: Implement ฟังก์ชัน search_tasks, filter_tasks และ sort_tasks | Status: Pending | Priority: High | Tags: coding, python, priority
+- ID: 4 | Description: ทบทวนการทำงานของ Data Persistence และ JSON Serialization | Status: Pending | Priority: Medium | Tags: review, python
+- ID: 6 | Description: Create test report | Status: Pending | Tags: python, test
+-----------------------------------
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 8
+
+ตัวเลือกการกรอง (สามารถเว้นว่างได้หากไม่ต้องการกรองเงื่อนไขนั้น):
+กรองตามสถานะ (completed/pending/เว้นว่าง): 
+กรองงานครบกำหนดก่อนวันที่ (YYYY-MM-DD/เว้นว่าง): 
+กรองตามความสำคัญ (High/Medium/Low/เว้นว่าง): High
+กรองตาม Tag (เว้นว่างได้): 
+
+--- ผลการกรองงาน (2 รายการ) ---
+- ID: 3 | Description: Implement ฟังก์ชัน search_tasks, filter_tasks และ sort_tasks | Status: Pending | Priority: High | Tags: coding, python, priority
+- ID: 8 | Description: Fix filters | Status: Pending | Priority: High | Tags: urgent
+-----------------------------------
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 9
+เรียงตาม (id / due_date / priority) [ค่าเริ่มต้น: id]: due_date
+เรียงจากมากไปน้อย (Descending? y/n) [ค่าเริ่มต้น: n]: n
+
+--- รายการงานที่จัดเรียงแล้ว (เกณฑ์: due_date) ---
+- ID: 2 | Description: ส่งงานโปรเจกต์ Task Manager ฉบับสมบูรณ์ | Status: Completed | Due: 2026-09-30 | Tags: assignment, university
+- ID: 7 | Description: Submit project | Status: Pending | Due: 2026-10-01 | Tags: deadline
+- ID: 1 | Description: อ่านเอกสาร PLAN.md และทำความเข้าใจสถาปัตยกรรม | Status: Completed | Tags: study, architecture, week11
+- ID: 3 | Description: Implement ฟังก์ชัน search_tasks, filter_tasks และ sort_tasks | Status: Pending | Priority: High | Tags: coding, python, priority
+- ID: 4 | Description: ทบทวนการทำงานของ Data Persistence และ JSON Serialization | Status: Pending | Priority: Medium | Tags: review, python
+- ID: 6 | Description: Create test report | Status: Pending | Tags: python, test
+- ID: 8 | Description: Fix filters | Status: Pending | Priority: High | Tags: urgent
+-----------------------------------
+
+=============================================
+     Enhanced Task Manager (Week 11)
+=============================================
+1. เพิ่มงานทั่วไป (Add Normal Task)
+2. เพิ่มงานที่มีวันครบกำหนด (Add Due Date Task)
+3. เพิ่มงานที่มีระดับความสำคัญ (Add Priority Task)
+4. แสดงรายการงานทั้งหมด (List All Tasks)
+5. เปลี่ยนสถานะงานเป็นเสร็จสิ้น (Complete Task)
+6. ลบงาน (Delete Task)
+7. ค้นหางาน (Search Tasks - Assignment)
+8. กรองงาน (Filter Tasks - Assignment)
+9. เรียงลำดับงาน (Sort Tasks - Assignment)
+0. ออกจากโปรแกรม (Exit)
+---------------------------------------------
+เลือกเมนู (0-9): 0
+
+ขอบคุณที่ใช้งาน Enhanced Task Manager! ลาก่อน
