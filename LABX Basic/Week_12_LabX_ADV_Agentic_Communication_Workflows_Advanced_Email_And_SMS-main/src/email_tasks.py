@@ -44,6 +44,10 @@ class EmailTasks:
             finally: self._smtp_server = None
 
     def send_email(self, recipients, subject, body, attachments=None, is_html=False):
+        if getattr(self, "dry_run", False):
+            destinations = sum(len(recipients.get(key, [])) for key in ("to", "cc", "bcc"))
+            logger.info(f"DRY RUN: simulated email '{subject}' to {destinations} recipient(s); no message sent.")
+            return destinations > 0
         if not self._connect_smtp(): return False
 
         msg = MIMEMultipart()
@@ -107,6 +111,9 @@ class EmailTasks:
             finally: self._imap_mail = None
 
     def search_emails(self, mailbox='INBOX', criteria='UNSEEN', from_sender=None, subject_contains=None):
+        if getattr(self, "dry_run", False):
+            logger.info("DRY RUN: simulated one unread Data Request email in the inbox.")
+            return [b"DRY-RUN-1"]
         if not self._connect_imap(): return []
         try:
             self._imap_mail.select(mailbox)
@@ -127,10 +134,26 @@ class EmailTasks:
             self._disconnect_imap()
 
     def fetch_email_content(self, uid, mark_as_read=True, download_attachments_dir=None):
+        if getattr(self, "dry_run", False):
+            attachments_meta = []
+            if download_attachments_dir:
+                ensure_directory_exists(download_attachments_dir)
+                sample_path = os.path.join(download_attachments_dir, "sample_request.txt")
+                with open(sample_path, "w", encoding="utf-8") as sample_file:
+                    sample_file.write("Simulated attachment for the Week 12 Advanced workflow.\n")
+                attachments_meta.append({"filename": "sample_request.txt", "filepath": sample_path})
+            return {
+                "uid": "DRY-RUN-1",
+                "sender": os.getenv("SENDER_EMAIL", "student@example.com"),
+                "subject": "Data Request for 2026-10-14 - Urgent",
+                "text_body": "Please process this urgent request for new data processing.",
+                "has_attachments": bool(attachments_meta),
+                "attachments_meta": attachments_meta
+            }
         if not self._connect_imap(): return None
         try:
             self._imap_mail.select('INBOX')
-            status, msg_data = self._imap_mail.fetch(uid, '(RFC822)')
+            status, msg_data = self._imap_mail.uid('fetch', uid, '(RFC822)')
             if status != 'OK': return None
 
             raw_email = msg_data[0][1]
@@ -150,7 +173,12 @@ class EmailTasks:
                 if "attachment" in content_disposition or (filename and part.get_content_maintype() != 'multipart'):
                     if filename and download_attachments_dir:
                         ensure_directory_exists(download_attachments_dir)
-                        filepath = os.path.join(download_attachments_dir, filename)
+                        # Strip any path components supplied by the remote email.
+                        safe_filename = os.path.basename(filename.replace('\\', '/'))
+                        if safe_filename in ('', '.', '..'):
+                            logger.warning("Skipping attachment with an unsafe filename.")
+                            continue
+                        filepath = os.path.join(download_attachments_dir, safe_filename)
                         try:
                             with open(filepath, "wb") as f:
                                 f.write(part.get_payload(decode=True))
@@ -164,7 +192,7 @@ class EmailTasks:
                     except: pass
 
             if mark_as_read:
-                self._imap_mail.store(uid, '+FLAGS', '\\Seen')
+                self._imap_mail.uid('store', uid, '+FLAGS', '\\Seen')
 
             return {
                 "uid": uid.decode('utf-8'),

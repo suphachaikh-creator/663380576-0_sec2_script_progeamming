@@ -5,8 +5,9 @@ from dotenv import load_dotenv
 import json
 import datetime
 
-# Load environment variables from .env file
-load_dotenv()
+# Resolve .env relative to this project, not the shell's current directory.
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -25,9 +26,9 @@ def setup_logging(name, level=logging.INFO):
 def get_env_variable(var_name):
     """Retrieves an environment variable, raising an error if not found."""
     value = os.getenv(var_name)
-    if value is None:
-        raise ValueError(f"Environment variable '{var_name}' not set. Please check your .env file.")
-    return value
+    if value is None or not value.strip():
+        raise ValueError(f"Environment variable '{var_name}' is missing or empty. Please check your .env file.")
+    return value.strip()
 
 def ensure_directory_exists(path):
     """Ensures that a directory exists, creating it if necessary."""

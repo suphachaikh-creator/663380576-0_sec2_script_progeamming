@@ -1,6 +1,7 @@
 # main.py
 import sys
 import os
+import argparse
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from config_parser import ConfigParser
@@ -10,6 +11,10 @@ from utils import setup_logging, ensure_directory_exists
 logger = setup_logging(__name__)
 
 def main():
+    parser = argparse.ArgumentParser(description="Run the configured email/SMS communication workflow.")
+    parser.add_argument("--task", help="Run only the workflow task with this exact configured name.")
+    args = parser.parse_args()
+
     base_dir = os.path.dirname(__file__)
     config_file_path = os.path.join(base_dir, 'configs', 'comm_pipeline_config.json')
 
@@ -26,7 +31,7 @@ def main():
         agent = CommunicationAgent(config, base_dir)
 
         logger.info("Running Communication Agent workflow...")
-        agent.run()
+        agent.run(task_name=args.task)
         logger.info("Communication automation process completed.")
 
     except Exception as e:

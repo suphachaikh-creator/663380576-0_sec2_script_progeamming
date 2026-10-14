@@ -18,13 +18,24 @@ class CommunicationAgent:
         self.base_dir = base_dir
 
         try:
-            sender_email = get_env_variable("SENDER_EMAIL")
-            sender_app_password = get_env_variable("SENDER_APP_PASSWORD")
-            smtp_server = get_env_variable("SMTP_SERVER")
-            smtp_port = int(get_env_variable("SMTP_PORT"))
-            imap_server = get_env_variable("IMAP_SERVER")
+            self.dry_run = os.getenv("DRY_RUN", "true").strip().lower() in ("1", "true", "yes", "on")
+            if self.dry_run:
+                # Safe defaults allow the complete workflow to be previewed without credentials.
+                sender_email = os.getenv("SENDER_EMAIL", "student@example.com")
+                sender_app_password = ""
+                smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
+                smtp_port = int(os.getenv("SMTP_PORT", "587"))
+                imap_server = os.getenv("IMAP_SERVER", "imap.gmail.com")
+                logger.info("DRY_RUN is enabled; no email, SMS, or mailbox connection will be made.")
+            else:
+                sender_email = get_env_variable("SENDER_EMAIL")
+                sender_app_password = get_env_variable("SENDER_APP_PASSWORD").replace(" ", "")
+                smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
+                smtp_port = int(os.getenv("SMTP_PORT", "587"))
+                imap_server = os.getenv("IMAP_SERVER", "imap.gmail.com")
 
             self.email_tasks = EmailTasks(smtp_server, smtp_port, imap_server, sender_email, sender_app_password)
+            self.email_tasks.dry_run = self.dry_run
             self.sms_tasks = SMSTasks(self.email_tasks)
             self.template_renderer = TemplateRenderer()
             logger.info("CommunicationAgent initialized with task handlers.")
@@ -92,8 +103,10 @@ class CommunicationAgent:
                                 then_act = rule.get("then", {})
                                 condition_met = True
 
-                                if "subject_contains" in if_cond and if_cond["subject_contains"] not in email_info['subject']: condition_met = False
-                                if "body_contains" in if_cond and if_cond["body_contains"] not in email_info['text_body']: condition_met = False
+                                subject_text = email_info.get('subject', '').casefold()
+                                body_text = email_info.get('text_body', '').casefold()
+                                if "subject_contains" in if_cond and if_cond["subject_contains"].casefold() not in subject_text: condition_met = False
+                                if "body_contains" in if_cond and if_cond["body_contains"].casefold() not in body_text: condition_met = False
                                 if "has_attachments" in if_cond and if_cond["has_attachments"] != email_info['has_attachments']: condition_met = False
 
                                 if condition_met:
@@ -130,15 +143,22 @@ class CommunicationAgent:
         except Exception as e:
             logger.error(f"Failed to save audit report: {e}")
 
-    def run(self):
+    def run(self, task_name=None):
         logger.info("Starting Communication Agent run...")
-        # Inject dummy context data
+        # Inject demo context data used by the supplied report templates.
         self._update_context("report_name", "DailySalesSummary")
         self._update_context("report_date", datetime.date.today().strftime("%Y-%m-%d"))
         self._update_context("sales_figure", 12345.67)
         self._update_context("total_customers", 500)
 
-        for task in self.config.get("tasks", []):
+        tasks = self.config.get("tasks", [])
+        if task_name:
+            tasks = [task for task in tasks if task.get("name") == task_name]
+            if not tasks:
+                raise ValueError(f"No workflow task found with name: {task_name}")
+            logger.info(f"Running selected task only: {task_name}")
+
+        for task in tasks:
             self._process_task(task)
 
         self._generate_audit_report(os.path.join(self.base_dir, 'reports'))
