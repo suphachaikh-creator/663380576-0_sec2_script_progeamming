@@ -1,4 +1,4 @@
-import my_utils
+import Lab.week6.lab6_2.my_utils as my_utils
 import math
 import random
 
