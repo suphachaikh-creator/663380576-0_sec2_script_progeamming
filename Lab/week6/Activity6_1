@@ -1,0 +1,27 @@
+# กำหนดฟังก์ชันสำหรับตรวจสอบว่าเป็นเลขบวก, ลบ หรือศูนย์
+def check_positive_negative(num):
+    if num < 0:
+        text = f"{num} is negative"
+    elif num > 0:
+        text = f"{num} is positive"
+    else:
+        text = f"{num} is zero"
+    return text  # ส่งข้อความผลลัพธ์กลับไป
+
+# กำหนดฟังก์ชันสำหรับตรวจสอบคู่หรือคี่
+def check_even_odd(num, text):
+    if num == 0:
+        print(f"{text}.")
+    elif num % 2 == 0:
+        print(f"{text} and even number.")
+    else:
+        print(f"{text} and odd number.")
+
+#ส่วนหลักของโปรแกรมสำหรับรับค่าและเรียกใช้งานฟังก์ชัน
+num = int(input("Enter a number: "))
+
+# เรียกใช้ฟังก์ชันแรกเพื่อรับข้อความสถานะ (บวก/ลบ/ศูนย์)
+result_text = check_positive_negative(num)
+
+# เรียกใช้ฟังก์ชันที่สองเพื่อพิมพ์ผลลัพธ์การเช็คคู่/คี่
+check_even_odd(num, result_text)
